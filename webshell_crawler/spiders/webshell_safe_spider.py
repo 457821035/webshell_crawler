@@ -22,7 +22,7 @@ class WebshellSafeSpider(CrawlSpider):
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/NCC-Shell.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Small%20Web%20Shell%20by%20ZaCo.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/cpanel.php",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/ex0shell.php"
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/ex0shell.php",
 
     ]
 

@@ -1,3 +1,5 @@
 .idea/
 *.iml
 webshell_pages/
+webshell_crawler/spiders/__pycache__/
+webshell_crawler/commands/__pycache__/

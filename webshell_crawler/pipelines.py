@@ -20,7 +20,7 @@ class WriterPipeline(object):
         self.store_path = '/Users/gavia/File/Gavia/Lab/work/webshell_crawler/webshell_pages/'
         self.filename = 'webshell_index'
         self.file = self.openFile(self.store_path, self.filename, 'w')
-        self.column_list = ['request_url', 'post', "transHeader", "transBody", 'response_status']
+        self.column_list = ['request_url', 'post', "response_header", "response_body", 'response_status']
         self.writeColumnName(self.column_list, self.file)
 
         self.file = self.openFile(self.store_path, self.filename, 'a')
@@ -38,7 +38,11 @@ class WriterPipeline(object):
         print("==="*40)
 
         transHeader = {key.decode('utf-8'): [x.decode("utf-8") for x in value] for (key, value) in item['response_header'].items()}
-        transBody = item['response_body'].decode("utf-8")
+
+        try:
+            transBody = item['response_body'].decode("utf-8")
+        except UnicodeDecodeError:
+            transBody = str(item['response_body']).replace("b\'", "'")
 
         if transBody.strip() == "":
             transBody = str(None)

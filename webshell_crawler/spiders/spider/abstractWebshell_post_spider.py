@@ -14,32 +14,31 @@ class AbstractWebshellPostSpider(CrawlSpider):
     allowed_domains = ["10.108.114.132"]
     # 这里存放要爬取的种子队列
     available_urls = [
-        "http://localhost/dvwa/hackable/uploads/php-webshells-master/KA_uShell%200.1.6.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/DTool%20Pro.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Dive%20Shell%201.0%20-%20Emperor%20Hacking%20Team.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/GRP%20WebShell%202.0%20release%20build%202018%20(C)2006,Great.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/KA_uShell%200.1.6.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Liz0ziM%20Private%20Safe%20Mode%20Command%20Execuriton%20Bypass%20Exploit.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Loaderz%20WEB%20Shell.php",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Moroccan%20Spamers%20Ma-EditioN%20By%20GhOsT.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/NCC-Shell.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/PhpSpy%20Ver%202006.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Predator.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Safe_Mode%20Bypass%20PHP%204.4.2%20and%20PHP%205.1.2.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/SimAttacker%20-%20Vrsion%201.0.0%20-%20priv8%204%20My%20friend.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Web-shell%20(c)ShAnKaR.php",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Worse%20Linux%20Shell.php",
+        # "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Worse%20Linux%20Shell.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/c99_locus7s.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/dC3%20Security%20Crew%20Shell%20PRiV.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/erne.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/ex0shell.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/fatal.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/g00nshell-v1.3.php",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/lamashell.php",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/lolipop.php",
+        # "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/lamashell.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/megabor.php",
 
     ]
+
+    task_path = '/var/www/dvwa/hackable/uploads/php-webshells-master'
 
 
     def parse(self, response):
@@ -88,4 +87,8 @@ class AbstractWebshellPostSpider(CrawlSpider):
         return webshell_item
 
     def get_command_list(self):
-        return ["ls", "pwd", "whoami", "ifconfig", "cat /etc/passwd", "ps", "ls -la",  "df"]
+        return ["ls", "pwd", "whoami", "ifconfig", "cat /etc/passwd",
+                "ps", "ls -la", "df", "cat /etc/syslog.conf", "cat /etc/hosts"]
+
+    def get_shell_exec_list(self):
+        return ['system', 'exec', 'shell_exec', 'popen']
