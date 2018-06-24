@@ -94,3 +94,4 @@ ITEM_PIPELINES = {
 
 DEPTH_LIMIT = 2
 DEPTH_STATS_VERBOSE = True
+COMMANDS_MODULE = 'webshell_crawler.commands'

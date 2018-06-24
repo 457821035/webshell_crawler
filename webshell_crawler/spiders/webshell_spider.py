@@ -1,5 +1,5 @@
 import scrapy
-from scrapy.contrib.spiders import CrawlSpider
+from scrapy.spiders import CrawlSpider
 
 from webshell_crawler import items
 

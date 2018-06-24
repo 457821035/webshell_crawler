@@ -7,8 +7,8 @@ class webshellPostSpiderKA_uShell(AbstractWebshellPostSpider):
 
     --  shell
     """
-    name = "webshell_post_cmd"
-    url = "http://localhost/dvwa/hackable/uploads/php-webshells-master/KA_uShell%200.1.6.php"
+    name = "webshell_post_KAuShell"
+    url = "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/KA_uShell%200.1.6.php"
 
     # 允许爬取的域名
     allowed_domains = AbstractWebshellPostSpider.allowed_domains

@@ -17,9 +17,14 @@ class WriterPipeline(object):
     写一般get的
     """
     def __init__(self):
-        self.file = open('/Users/gavia/File/Gavia/Lab/work/webshell_crawler/webshell_pages/webshell_index', 'w')
+        self.store_path = '/Users/gavia/File/Gavia/Lab/work/webshell_crawler/webshell_pages/'
+        self.filename = 'webshell_index'
+        self.file = self.openFile(self.store_path, self.filename, 'w')
         self.column_list = ['request_url', 'post', "transHeader", "transBody", 'response_status']
         self.writeColumnName(self.column_list, self.file)
+
+        self.file = self.openFile(self.store_path, self.filename, 'a')
+
 
     def process_item(self, item, spider):
         if spider.name != "webshell_index":
@@ -55,6 +60,9 @@ class WriterPipeline(object):
         first_line += "\n"
         file.write(first_line)
 
+    def openFile(self, store_path, filename, mode):
+        return open(store_path + filename, mode)
+
 
 class WriterSafePipeline(WriterPipeline):
     """
@@ -62,8 +70,11 @@ class WriterSafePipeline(WriterPipeline):
     """
     def __init__(self):
         super(WriterSafePipeline, self).__init__()
-        self.file = open('/Users/gavia/File/Gavia/Lab/work/webshell_crawler/webshell_pages/webshell_safe', 'w')
+        self.filename = 'webshell_safe'
+        self.file = self.openFile(self.store_path, self.filename, 'w')
         self.writeColumnName(self.column_list, self.file)
+
+        self.file = self.openFile(self.store_path, self.filename, 'a')
 
     def process_item(self, item, spider):
         if spider.name != "webshell_safe":
@@ -78,12 +89,15 @@ class WriterPostPipeline(WriterPipeline):
     """
     def __init__(self):
         super(WriterPostPipeline, self).__init__()
-        self.file = open('/Users/gavia/File/Gavia/Lab/work/webshell_crawler/webshell_pages/webshell_post', 'w')
+        self.filename = 'webshell_post'
+        self.file = self.openFile(self.store_path, self.filename, 'w')
         self.writeColumnName(self.column_list, self.file)
+
+        self.file = self.openFile(self.store_path, self.filename, 'a')
+
 
     def process_item(self, item, spider):
         if spider.name.find("webshell_post") < 0:
             return item
 
-        print(spider.name.find("webshell_post"))
         return self.output(spider, item)
