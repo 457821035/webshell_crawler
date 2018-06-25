@@ -21,6 +21,7 @@ class WriterPipeline(object):
         self.filename = 'webshell_test'
         # self.file = self.openFile(self.store_path, self.filename, 'w')
         self.column_list = ['request_url', 'post', "response_header", "response_body", 'response_status']
+        self.sep = '<--->'
         # self.writeColumnName(self.column_list, self.file)
 
         # self.file = self.openFile(self.store_path, self.filename, 'a')
@@ -50,17 +51,17 @@ class WriterPipeline(object):
         if "post" not in item.keys() or str(item['post']).replace("{","").replace("}","").strip() == "":
             item['post'] = str(None)
 
-        line = str(item['request_url']) + "\t" + str(item['post']) + "\t" +str(transHeader) + "\t" \
-               + transBody.replace("\n","").replace("\r","") + "\t" + str(item['response_status']) + "\n"
+        line = str(item['request_url']) + self.sep + str(item['post']) + self.sep +str(transHeader) + self.sep \
+               + transBody.replace("\n","").replace("\r","") + self.sep + str(item['response_status']) + "\n"
         self.file.write(line)
         return item
-
+    
     def writeColumnName(self, column_list, file):
         first_line = ""
         for colName in column_list:
-            first_line += colName + "\t"
+            first_line += colName + self.sep
 
-        first_line = first_line.strip("\t")
+        first_line = first_line.strip(self.sep)
         first_line += "\n"
         file.write(first_line)
 
