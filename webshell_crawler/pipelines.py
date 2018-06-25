@@ -14,23 +14,23 @@ class WebshellCrawlerPipeline(object):
 
 class WriterPipeline(object):
     """
-    写一般get的
+    父类，所有写pipeline都从这继承
     """
     def __init__(self):
         self.store_path = '/Users/gavia/File/Gavia/Lab/work/webshell_crawler/webshell_pages/'
-        self.filename = 'webshell_index'
-        self.file = self.openFile(self.store_path, self.filename, 'w')
+        self.filename = 'webshell_test'
+        # self.file = self.openFile(self.store_path, self.filename, 'w')
         self.column_list = ['request_url', 'post', "response_header", "response_body", 'response_status']
-        self.writeColumnName(self.column_list, self.file)
+        # self.writeColumnName(self.column_list, self.file)
 
-        self.file = self.openFile(self.store_path, self.filename, 'a')
+        # self.file = self.openFile(self.store_path, self.filename, 'a')
 
 
     def process_item(self, item, spider):
-        if spider.name != "webshell_index":
+        if spider.name != "webshell_test":
             return item
 
-        return self.output(item)
+        return self.output(spider, item)
 
     def output(self, spider, item):
         print("==="*40)
@@ -66,6 +66,25 @@ class WriterPipeline(object):
 
     def openFile(self, store_path, filename, mode):
         return open(store_path + filename, mode)
+
+
+class WriterIndexPipeline(WriterPipeline):
+    """
+    写一般get的
+    """
+    def __init__(self):
+        super(WriterIndexPipeline, self).__init__()
+        self.filename = 'webshell_index'
+        self.file = self.openFile(self.store_path, self.filename, 'w')
+        self.writeColumnName(self.column_list, self.file)
+
+        self.file = self.openFile(self.store_path, self.filename, 'a')
+
+    def process_item(self, item, spider):
+        if spider.name != "webshell_index":
+            return item
+
+        return self.output(spider, item)
 
 
 class WriterSafePipeline(WriterPipeline):

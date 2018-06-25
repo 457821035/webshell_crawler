@@ -6,7 +6,7 @@ from webshell_crawler import items
 
 class WebshellSafeSpider(CrawlSpider):
     """
-    爬取深度：2
+    爬取深度：安全起见建议 2
     这里的webshell都是安全的，不会删除文件系统
     """
     name = "webshell_safe"

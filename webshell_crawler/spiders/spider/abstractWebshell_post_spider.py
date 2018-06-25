@@ -35,6 +35,16 @@ class AbstractWebshellPostSpider(CrawlSpider):
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/g00nshell-v1.3.php",
         # "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/lamashell.php",
         "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/megabor.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/php-backdoor.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/php-include-w-shell.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/qsd-php-backdoor.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/rootshell.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/ru24_post_sh.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/s72%20Shell%20v1.1%20Coding.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/safe0ver.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/simple_cmd.php",
+        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/small.php",
+
 
     ]
 

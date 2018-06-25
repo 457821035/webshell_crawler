@@ -67,8 +67,9 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
    'webshell_crawler.pipelines.WebshellCrawlerPipeline': 300,
     'webshell_crawler.pipelines.WriterPipeline': 500,
-    'webshell_crawler.pipelines.WriterSafePipeline': 501,
-    'webshell_crawler.pipelines.WriterPostPipeline': 502,
+    'webshell_crawler.pipelines.WriterIndexPipeline': 501,
+    'webshell_crawler.pipelines.WriterSafePipeline': 502,
+    # 'webshell_crawler.pipelines.WriterPostPipeline': 503,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
