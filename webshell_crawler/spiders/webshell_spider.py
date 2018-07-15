@@ -2,7 +2,7 @@ import scrapy
 from scrapy.spiders import CrawlSpider
 
 from webshell_crawler import items
-
+from webshell_crawler.utils.csv_reader import *
 
 class WebshellSpider(CrawlSpider):
     """
@@ -11,20 +11,23 @@ class WebshellSpider(CrawlSpider):
     name = "webshell_index"
 
     # 允许爬取的域名
-    allowed_domains = ["10.108.114.132", "localhost:8080"]
+    # allowed_domains = ["10.108.114.132", "localhost:8080"]
     # 这里存放要爬取的种子队列
-    start_urls = [
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Macker's%20Private%20PHPShell.php",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/nshell.php",
-        "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/simattacker.php",
+    # start_urls = [
+    #     "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/",
+    #     "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/Macker's%20Private%20PHPShell.php",
+    #     "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/nshell.php",
+    #     "http://10.108.114.132/dvwa/hackable/uploads/php-webshells-master/simattacker.php",
+    #
+    #     "http://localhost:8080/webshell/tennc-webshell-master/jsp/3.jsp",
+    #     "http://localhost:8080/webshell/tennc-webshell-master/jsp/102.jsp",
+    #     "http://localhost:8080/webshell/tennc-webshell-master/jsp/201.jsp",
+    #     "http://localhost:8080/webshell/tennc-webshell-master/jsp/404.jsp",
+    #
+    # ]
 
-        "http://localhost:8080/webshell/tennc-webshell-master/jsp/3.jsp",
-        "http://localhost:8080/webshell/tennc-webshell-master/jsp/102.jsp",
-        "http://localhost:8080/webshell/tennc-webshell-master/jsp/201.jsp",
-        "http://localhost:8080/webshell/tennc-webshell-master/jsp/404.jsp",
-
-    ]
+    path = "/Users/gavia/Downloads/流量工作文档/webshell类别/crawl_webshell_data/webshell_data/webshell_check/webshell_check_18_07_12/webshell_data0712.csv"
+    start_urls = read_url_from_csv(path)
 
 
     def parse(self, response):
